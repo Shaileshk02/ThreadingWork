@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <thread>
+#include "JoinAttach.h"
 // Read me:
 // In this a thread is created using function pointer and the thread is 
 // executed by calling the function in the thread. The main thread waits 
@@ -101,5 +102,16 @@ int main()
 		t4.join();  // Wait for the static member function thread to finish
 	//===
 
+	//=== Run Join tutorial
+	std::cout << "Running Join tutorial\n";
+	std::thread t5(&JoinAttachClass::runThread, 20);	
+	if(t5.joinable())
+		t5.join();
+	 
+	//if (t5.joinable())
+	//	t5.detach(); // Detach the thread if it is still joinable (not joined yet)
+
+		// Wait for the thread to finish
+	std::cout << "Join tutorial completed\n";
 	return 0;
 }
