@@ -103,13 +103,19 @@ int main()
 	//===
 
 	//=== Run Join tutorial
+	// if thread is  joined, main thread waits for the thread to finish its job. But when detach is called
+	// the thread is allowed to run independently and main thread does not wait for it to finish.
+	//in below code if detach is called it is not possible to see the runThread output as main thread may finish before the 
+	// worker thread completes its execution. So join is used to wait for the worker thread to finish before main thread exits.
+
+
 	std::cout << "Running Join tutorial\n";
 	std::thread t5(&JoinAttachClass::runThread, 20);	
-	if(t5.joinable())
-		t5.join();
+	//if(t5.joinable())
+	//	t5.join();
 	 
-	//if (t5.joinable())
-	//	t5.detach(); // Detach the thread if it is still joinable (not joined yet)
+	if (t5.joinable())
+		t5.detach(); // Detach the thread if it is still joinable (not joined yet)
 
 		// Wait for the thread to finish
 	std::cout << "Join tutorial completed\n";

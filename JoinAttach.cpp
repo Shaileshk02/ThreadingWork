@@ -4,6 +4,9 @@
 
 using namespace std;
 
+
+
+
 void JoinAttachClass::runThread(int count)
 {
 	for (size_t i = 0; i < count; i++)
